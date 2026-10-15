@@ -1,0 +1,48 @@
+<div class="container mt-4" *ngIf="estudiante">
+  <div class="card shadow border-0">
+    <div class="card-header bg-primary text-white py-3">
+      <h3 class="mb-0 fs-4">🎓 Reporte Completo del Alumno</h3>
+    </div>
+    <div class="card-body p-4">
+      <h4 class="text-secondary mb-4">Estudiante: <span class="text-dark fw-bold">{{ estudiante.nombre }}</span></h4>
+      
+      <div class="row g-4">
+
+        <div class="col-md-6">
+          <h5 class="text-muted mb-2 border-bottom pb-1">Notas Registradas</h5>
+          <ul class="list-group shadow-sm">
+            <li class="list-group-item d-flex justify-content-between"><span>Nota 1:</span> <span class="fw-bold">{{ estudiante.nota1 }}</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>Nota 2:</span> <span class="fw-bold">{{ estudiante.nota2 }}</span></li>
+            <li class="list-group-item d-flex justify-content-between"><span>Nota 3:</span> <span class="fw-bold">{{ estudiante.nota3 }}</span></li>
+            <li class="list-group-item d-flex justify-content-between bg-light text-dark fw-bold"><span>Suma Total:</span> <span>{{ sumaNotas }} pts.</span></li>
+          </ul>
+        </div>
+        
+        <div class="col-md-6">
+          <h5 class="text-muted mb-2 border-bottom pb-1">Resultados Evaluativos</h5>
+          <div class="p-3 bg-light border rounded shadow-sm h-100">
+            <p class="fs-5 mb-3"><strong>Promedio Final:</strong> <span class="text-primary fw-bold ms-2">{{ promedio | number:'1.2-2' }}</span></p>
+            
+            <p class="fs-5 mb-3">
+              <strong>Estado Académico:</strong> 
+              <span class="badge ms-2 px-3 py-2" [ngClass]="estadoAcademico === 'Aprobado' ? 'bg-success' : 'bg-danger'">
+                {{ estadoAcademico }}
+              </span>
+            </p>
+            
+            <p class="fs-5 mb-2">
+              <strong>Observación:</strong> 
+              <span class="badge ms-2 px-3 py-2 text-dark text-wrap" 
+                    [ngClass]="{'bg-info text-white': observacion === 'Excelente', 'bg-warning': observacion === 'Regular', 'bg-danger text-white': observacion === 'En riesgo'}">
+                {{ observacion }}
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer bg-white text-start p-3 border-0">
+      <button class="btn btn-outline-secondary fw-bold" routerLink="/estudiantes">⬅️ Regresar a la Lista</button>
+    </div>
+  </div>
+</div>

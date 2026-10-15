@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <h2 class="text-primary border-bottom pb-2">Control de Notas - UTP</h2>
+  
+  <div *ngIf="errorCarga()" class="alert alert-danger text-center" role="alert">{{ errorCarga() }}</div>
+
+  <div class="table-responsive" *ngIf="!errorCarga()">
+    <table class="table table-bordered table-striped align-middle shadow-sm">
+      <thead class="table-dark text-center">
+        <tr>
+          <th>Nombre del Estudiante</th>
+          <th>Nota 1</th>
+          <th>Nota 2</th>
+          <th>Nota 3</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let est of estudiantes()">
+          <td>{{ est.nombre }}</td>
+          <td class="text-center fw-semibold">{{ est.nota1 }}</td>
+          <td class="text-center fw-semibold">{{ est.nota2 }}</td>
+          <td class="text-center fw-semibold">{{ est.nota3 }}</td>
+          <td class="text-center">
+            <button class="btn btn-info btn-sm fw-bold text-white shadow-sm" (click)="verDetalle(est)">
+              👁️ Detalle
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
